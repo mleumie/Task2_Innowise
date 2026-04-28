@@ -32,6 +32,4 @@ build/
 ### Mac OS ###
 .DS_Store
 
-.gitignore
-
-pom.xml
+/log/
