@@ -22,6 +22,21 @@ public class TextComposite extends TextComponent {
     }
 
     @Override
+    public TextComponent get(int i) {
+        return components.get(i);
+    }
+
+    @Override
+    public void set(int i, TextComponent component) {
+        components.set(i, component);
+    }
+
+    @Override
+    public int size() {
+        return components.size();
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (TextComponent component : components) {
@@ -39,11 +54,5 @@ public class TextComposite extends TextComponent {
     @Override
     public Iterator<TextComponent> iterator() {
         return components.iterator();
-    }
-
-    @Override
-    public int count() {
-        int sum = 0;
-
     }
 }

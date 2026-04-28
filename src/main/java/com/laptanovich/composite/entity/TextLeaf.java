@@ -1,12 +1,12 @@
 package com.laptanovich.composite.entity;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.Collections;
 import java.util.Iterator;
 
 public class TextLeaf extends TextComponent {
-    private static final Logger logger = LogManager.getLogger(TextLeaf.class);
+    private static final Logger logger = LogManager.getLogger();
     private final char value;
 
     public TextLeaf(char character, TextComponentType type) {
@@ -27,6 +27,23 @@ public class TextLeaf extends TextComponent {
     }
 
     @Override
+    public TextComponent get(int i) {
+        logger.warn("Can't get from a leaf component");
+        throw new UnsupportedOperationException("Can't get from a leaf component");
+    }
+
+    @Override
+    public void set(int i, TextComponent component) {
+        logger.warn("Can't set in a leaf component");
+        throw new UnsupportedOperationException("Can't set in a leaf component");
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return String.valueOf(value);
     }
@@ -34,10 +51,5 @@ public class TextLeaf extends TextComponent {
     @Override
     public Iterator<TextComponent> iterator() {
         return Collections.emptyIterator();
-    }
-
-    @Override
-    public int count() {
-        return 1;
     }
 }
