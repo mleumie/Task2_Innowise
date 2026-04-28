@@ -2,15 +2,15 @@ package com.laptanovich.composite.reader.impl;
 
 import com.laptanovich.composite.exception.CustomException;
 import com.laptanovich.composite.reader.TextReader;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class TextReaderImpl implements TextReader {
-    private static final Logger logger = LogManager.getLogger(TextReaderImpl.class);
+    private static final Logger logger = LogManager.getLogger();
 
     @Override
     public String read(String filePath) throws CustomException {
