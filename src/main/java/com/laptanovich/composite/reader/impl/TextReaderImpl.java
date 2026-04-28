@@ -14,13 +14,13 @@ public class TextReaderImpl implements TextReader {
 
     @Override
     public String read(String filePath) throws CustomException {
-        logger.info("Reading text from file: " + filePath);
+        logger.info("Reading text from file: {}", filePath);
         try {
             String content = Files.readString(Paths.get(filePath));
-            logger.info("File successfully read: " + filePath);
+            logger.info("File successfully read: {}", filePath);
             return content;
         } catch (IOException e) {
-            logger.error("Error reading file: " + filePath, e);
+            logger.error("Error reading file: {}", filePath, e);
             throw new CustomException("Could not read file at: " + filePath, e);
         }
 

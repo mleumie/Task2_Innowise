@@ -1,18 +1,21 @@
 package com.laptanovich.composite.service;
 
 import com.laptanovich.composite.parser.*;
-import com.laptanovich.composite.service.impl.CountServiceImpl;
-import org.junit.Test;
+import com.laptanovich.composite.service.impl.SortServiceImpl;
 import org.junit.Before;
+import org.junit.Test;
+
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
-public class CountServiceTest {
-    private CountServiceImpl countService;
+public class SortServiceTest {
+    private SortServiceImpl sortService;
     private TextParser textParser;
 
     @Before
     public void setUp() {
-        countService = new CountServiceImpl();
+        sortService = new SortServiceImpl();
         textParser = new TextParser();
         ParagraphParser paragraphParser = new ParagraphParser();
         SentenceParser sentenceParser = new SentenceParser();
@@ -27,17 +30,18 @@ public class CountServiceTest {
     }
 
     @Test
-    public void countDuplicate_duplicateWords() {
-        TextComponentTest root = textParser.parse("Word, word duplicate");
-        int count = countService.countDuplicate(root);
-        assertEquals(1, count);
+    public void countLetter() {
+        TextComponentTest root = textParser.parse("Aaa Bb a, A? A");
+        int count = sortService.countLetter(root, 'A');
+        assertEquals(6, count);
     }
 
     @Test
-    public void countDuplicate_noDuplicateWords() {
-        TextComponentTest root = textParser.parse("Unique words");
-        int count = countService.countDuplicate(root);
-        assertEquals(0, count);
+    public void sortSentences_byCount() {
+        TextComponentTest root = textParser.parse("Aaa? Bb! AaaA.");
+        List<TextComponentTest> sorted = sortService.sortSentences(root, 'A');
+        assertEquals("Bb!", sorted.get(0).toString());
+        assertEquals("Aaa?", sorted.get(1).toString());
+        assertEquals("AaaA.", sorted.get(2).toString());
     }
-
 }

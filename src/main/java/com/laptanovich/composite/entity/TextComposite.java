@@ -39,14 +39,17 @@ public class TextComposite extends TextComponent {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        TextComponentType prevType = null;
         for (TextComponent component : components) {
-            sb.append(component.toString());
-            if (component.getType() == TextComponentType.WORD) {
+            if ((prevType == TextComponentType.WORD || prevType == TextComponentType.LEXEME)
+                    && component.getType() != TextComponentType.PUNCTUATION) {
                 sb.append(" ");
             }
+            sb.append(component.toString());
             if (component.getType() == TextComponentType.PARAGRAPH) {
                 sb.append("\n");
             }
+            prevType = component.getType();
         }
         return sb.toString();
     }

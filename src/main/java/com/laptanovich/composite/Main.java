@@ -42,10 +42,10 @@ public class Main {
             String text = reader.read("data/text.txt");
             TextComponent root = textParser.parse(text);
             int duplicateCount = countService.countDuplicate(root);
-            logger.info("Sentences with duplicate words: " + duplicateCount);
+            logger.info("Sentences with duplicate words: {}", duplicateCount);
             char letter = 'I';
             List<TextComponent> sorted = sortService.sortSentences(root, letter);
-            logger.info("Sorted sentences by letter '" + letter + "':");
+            logger.info("Sorted sentences by letter '{}':", letter);
             for (TextComponent sentence : sorted) {
                 logger.info(sentence.toString());
             }

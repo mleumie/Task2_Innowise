@@ -25,9 +25,10 @@ public class SortServiceImpl implements SortService {
     @Override
     public int countLetter(TextComponent component, char letter) {
         int count = 0;
-        String text = component.toString();
+        char letterLower = Character.toLowerCase(letter);
+        String text = component.toString().toLowerCase();
         for (char c : text.toCharArray()) {
-            if (c == letter) {
+            if (c == letterLower) {
                 count++;
             }
         }

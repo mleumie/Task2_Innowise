@@ -5,7 +5,7 @@ import com.laptanovich.composite.entity.TextComponentType;
 import com.laptanovich.composite.entity.TextComposite;
 
 public class ParagraphParser extends AbstractTextParser {
-    private static final String SENTENCE_DELIMITER = "(?<=\\.)|(?<=!)|(?<=\\?)";
+    private static final String SENTENCE_DELIMITER = "(?<=[.!?])";
 
     @Override
     public TextComponent parse(String text) {
