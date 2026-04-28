@@ -18,7 +18,7 @@ public class SortServiceImpl implements SortService {
         List<TextComponent> sentences = new ArrayList<>();
         collectSentences(component, sentences);
         sentences.sort(Comparator.comparing(s -> countLetter(s, letter)));
-        logger.info("Sentences sorted by" + letter + ": " + sentences.size());
+        logger.info("Sentences sorted by{}: {}", letter, sentences.size());
         return sentences;
     }
 

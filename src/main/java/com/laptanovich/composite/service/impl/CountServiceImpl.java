@@ -24,7 +24,7 @@ public class CountServiceImpl implements CountService {
                 count++;
             }
         }
-        logger.info("Sentences with duplicate words: " + count);
+        logger.info("Sentences with duplicate words: {}", count);
         return count;
     }
 
@@ -42,7 +42,7 @@ public class CountServiceImpl implements CountService {
     @Override
     public boolean collectWords(TextComponent component, Set<String> array) {
         if (component.getType() == TextComponentType.WORD) {
-            String word = component.toString().strip();
+            String word = component.toString().toLowerCase().strip();
             return !array.add(word); //true if in array
         }
         for (TextComponent child : component) {

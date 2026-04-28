@@ -24,7 +24,7 @@ public class SwapServiceImpl implements SwapService {
                 sentence.set(sentence.size() - 1, first);
             }
         }
-        logger.info("Swapped lexemes in " + sentences.size() + "sentences");
+        logger.info("Swapped lexemes in {} sentences", sentences.size());
     }
 
     @Override
